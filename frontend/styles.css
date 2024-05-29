@@ -46,7 +46,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
 }
 .form-group label {
   width: 30%;
