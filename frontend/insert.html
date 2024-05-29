@@ -7,13 +7,32 @@
 </head>
 <body>
     <h1>Insert Data</h1>
+    <div class="form-container">
+    
     <form id="insertForm">
-        ID: <input type="text" name="id" required><br>
-        Name: <input type="text" name="name" required><br>
-        Email Id: <input type="email" name="email" required><br>
-        Phone Number: <input type="text" name="phone" required><br>
+        <div class="form-group">
+            <label for="id">ID:</label>  
+            <input type="text" name="id" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Id:</label>
+            <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="text" name="phone" required>
+        </div>
+         
+    
+      
         <button type="submit">Insert Data</button>
     </form>
+        
+</div>
     <button onclick="location.href='index.html'">Return to Home</button>
     <div id="message"></div>
     <script src="script.js"></script>

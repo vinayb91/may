@@ -6,17 +6,20 @@
     <title>User Management System</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        body{
-            text-align: center;
-            margin: auto;
-        }
+      
     </style>
 </head>
 <body>
-    <h1>Welcome to User Management System</h1>
-    <button onclick="location.href='insert.html'">Insert Data</button>
-    <button onclick="location.href='delete.html'">Delete Data</button>
-    <button onclick="location.href='select.html'">Select Data</button>
-    <button onclick="location.href='update.html'">Update Data</button>
+    <h4>Welcome to User Management System</h4>
+    <div class="action">
+       <p>To insert your details into the Database:</p>  <button class="action-btn" onclick="location.href='insert.html'">Insert Data</button>
+    </div >
+    <div class="action">
+        <p>To delete your details into the Database:</p>  <button class="action-btn" onclick="location.href='delete.html'">Delete Data</button>
+    </div>
+    <div class="action">
+       <p>To view your details into the Database: </p>  <button class="action-btn" onclick="location.href='select.html'">Select Data</button>
+    </div>
+    <!-- To insert your details into the Database: <button onclick="location.href='update.html'">Update Data</button> -->
 </body>
 </html>
