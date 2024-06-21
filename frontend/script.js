@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
          
             const id = parseInt(document.getElementById('selectId').value); 
             try {
-                const response = await fetch(`/users/select/${id}`);
+                const response = await fetch(`http://localhost:1050/users/${id}`);
                 const user = await response.json();
                 if (user) {
                     
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = parseInt(document.getElementById('deleteId').value);
 
             try {
-                const response = await fetch(`/users/delete/${id}`, {
+                const response = await fetch(`http://localhost:1050/users/${id}`, {
                     method: 'DELETE'
                 });
                 const result = await response.text();
