@@ -81,7 +81,7 @@
             };
 
             try {
-                const response = await fetch('/users/update', {
+                const response = await fetch(`http://localhost:1050/users/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
