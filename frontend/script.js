@@ -44,22 +44,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Check for duplicate entry
             try {
-                const checkResponse = await fetch(`http://localhost:1050/users/${id}`);
+                const checkResponse = await fetch(`http://localhost:3000/users/select/${id}`);
                 if (checkResponse.ok) {
                     const existingUser = await checkResponse.json();
                     if (existingUser) {
+                        document.getElementById('message').innerText = '';
                         validationMessage.innerText = 'User with this ID already exists';
                         return;
                     }
                 }
             } catch (error) {
+                 validationMessage.innerText = ''
                 document.getElementById('message').innerText = 'Error: ' + error;
                 return;
             }
 
             // Insert data if no duplicates found
             try {
-                const response = await fetch('http://localhost:1050/users', {
+                const response = await fetch('http://localhost:3000/users/insert', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -67,46 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(data)
                 });
                 const result = await response.text();
+                 validationMessage.innerText = ''
+                 
                 document.getElementById('message').innerText = result;
             } catch (error) {
+                 validationMessage.innerText = ''
                 document.getElementById('message').innerText = 'Error: ' + error;
             }
         });
     }
 
     // Select Form Submission
-    const selectForm = document.getElementById('selectForm');
-    if (selectForm) {
-        selectForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-         
-            const id = parseInt(document.getElementById('selectId').value); 
-            try {
-                const response = await fetch(`http://localhost:1050/users/${id}`);
-                const user = await response.json();
-                if (user) {
-                    
-                    document.getElementById('resultId').innerText = user.id;
-                    document.getElementById('resultName').innerText = user.name;
-                    document.getElementById('resultEmail').innerText = user.email;
-                    document.getElementById('resultPhone').innerText = user.phone;
-
-                   
-                    document.getElementById('result').style.display = 'block';
-
-                   
-                    const updateButton = document.getElementById('updateButton');
-                    updateButton.style.display = 'block';
-                    updateButton.href = `update.html?id=${user.id}`;
-                } else {
-                    document.getElementById('result').innerText = 'User not found';
-                }
-            } catch (error) {
-                document.getElementById('result').innerText = 'Error: ' + error;
-            }
-        });
-    }
+    
 
     //  Delete Form Submission
     const deleteForm = document.getElementById('deleteForm');
@@ -118,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = parseInt(document.getElementById('deleteId').value);
 
             try {
-                const response = await fetch(`http://localhost:1050/users/${id}`, {
+                const response = await fetch(`http://localhost:3000/users/delete/${id}`, {
                     method: 'DELETE'
                 });
                 const result = await response.text();

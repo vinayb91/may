@@ -62,3 +62,23 @@ button {
     width: 400px;
    
 }
+#result{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#result span{
+  width: 70%;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: medium;
+  font-weight: 600;
+  color: black;
+}
+#result .label-span{
+  width: 30%;
+  margin-right: 10px;
+  font-size: medium;
+  font-weight: 600;
+  color: black;
+}

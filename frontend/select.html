@@ -1,25 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Select Data</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <h4>Select Data</h4>
     <form id="selectForm">
-        Enter ID: <input type="text" id="selectId" name="id" required><br>
-        <button type="submit">View Data</button>
+      Enter ID: <input type="text" id="selectId" name="id" required /><br />
+      <br />
+      <button type="submit">View Data</button>
     </form>
-    <div id="result" style="display:none;">
-        <p>ID: <span id="resultId"></span></p>
-        <p>Name: <span id="resultName"></span></p>
-        <p>Email: <span id="resultEmail"></span></p>
-        <p>Phone: <span id="resultPhone"></span></p>
-        <a id="updateButton" href="" style="display:none;">Update Data</a>
-    </div>
     <button onclick="location.href='index.html'">Return to Home</button>
-    <div id="message"></div>
-    <script src="script.js"></script>
-</body>
+    <div id="result" style="display: none">
+      <div><span class="label-span">ID:</span> <span id="user-id"></span></div>
+      <div>
+        <span class="label-span">Name:</span> <span id="user-name"></span>
+      </div>
+      <div>
+        <span class="label-span">Email:</span> <span id="user-email"></span>
+      </div>
+      <div>
+        <span class="label-span">Phone:</span> <span id="user-phone"></span>
+      </div>
+
+      <div id="update-button-container"></div>
+      <div id="errorMessage"></div>
+    </div>
+    <br />
+
+    <!-- <div id="result"></div> -->
+    <script>
+      // document.getElementById("result").innerText = "";
+
+      const selectForm = document.getElementById("selectForm");
+      const resultDiv = document.getElementById("result");
+      const userIdDiv = document.getElementById("user-id");
+      const userNameDiv = document.getElementById("user-name");
+      const userEmailDiv = document.getElementById("user-email");
+      const userPhoneDiv = document.getElementById("user-phone");
+      const updateButtonContainer = document.getElementById(
+        "update-button-container"
+      );
+      const errorMessage = document.getElementById("errorMessage");
+      if (selectForm) {
+        selectForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          // document.getElementById('result').innerText = '';
+          const idField = document.getElementsByName("id")[0];
+          const id = parseInt(idField.value.trim());
+          console.log("ID:", id);
+
+          // Clear previous results
+          errorMessage.innerHTML = "";
+          userIdDiv.innerHTML = "";
+          userNameDiv.innerHTML = "";
+          userEmailDiv.innerHTML = "";
+          userPhoneDiv.innerHTML = "";
+          updateButtonContainer.innerHTML = "";
+          document.getElementById("result").style.display = "block";
+
+          if (isNaN(id) || id <= 0) {
+            console.log("Invalid ID");
+            resultDiv.innerText = "Please enter a valid ID";
+            return;
+          }
+          console.log("form contrrol", id);
+          try {
+            const response = await fetch(
+              `http://localhost:3000/users/select/${id}`
+            );
+            const user = await response.json();
+            // console.log(user);
+            // document.getElementById('result').innerText = ''
+            console.log(user);
+            if (user) {
+              console.log("if block");
+              userIdDiv.innerText = `${user.id}`;
+              userNameDiv.innerText = `${user.name}`;
+              userEmailDiv.innerText = ` ${user.email}`;
+              userPhoneDiv.innerText = ` ${user.phone}`;
+              updateButtonContainer.innerHTML = `To insert your details into the Database: <button onclick="redirectToUpdate(${user.id})">Update Data</button>`;
+            } else {
+              console.log("else block");
+              document.getElementById("errorMessage").innerText =
+                "User not found";
+            }
+          } catch (error) {
+            console.log("error", error);
+            console.log("catch block");
+            document.getElementById("errorMessage").innerText =
+              "User not found";
+            document.getElementById("result").style.display = "none";
+          }
+
+          });
+          }
+            function redirectToUpdate(id) {
+              console.log("Redirecting to update with ID:", id);
+              location.href = `update.html?id=${id}`;
+            }
+    </script>
+  </body>
 </html>
