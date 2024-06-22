@@ -79,27 +79,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Select Form Submission
-    
 
+    
+   
+    
     //  Delete Form Submission
-    const deleteForm = document.getElementById('deleteForm');
-    if (deleteForm) {
-        deleteForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
+    // const deleteForm = document.getElementById('deleteForm');
+    // if (deleteForm) {
+    //     deleteForm.addEventListener('submit', async (event) => {
+    //         event.preventDefault();
 
          
-            const id = parseInt(document.getElementById('deleteId').value);
+    //         const id = parseInt(document.getElementById('deleteId').value);
 
-            try {
-                const response = await fetch(`http://localhost:3000/users/delete/${id}`, {
-                    method: 'DELETE'
-                });
-                const result = await response.text();
-                document.getElementById('message').innerText = result;
-            } catch (error) {
-                document.getElementById('message').innerText = 'Error: ' + error;
-            }
-        });
-    }
+    //         try {
+    //             const response = await fetch(`http://localhost:3000/users/delete/${id}`, {
+    //                 method: 'DELETE'
+    //             });
+    //             const result = await response.text();
+    //             document.getElementById('message').innerText = result;
+    //         } catch (error) {
+    //             document.getElementById('message').innerText = 'Error: ' + error;
+    //         }
+    //     });
+    // }
 });
