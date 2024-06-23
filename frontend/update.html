@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h4>Update Data</h4>
+    <div class="container">
+    <h4>Update User Information</h4>
     <form id="updateForm">
         <div class="form-group">
             <label for="id">ID:</label>  
@@ -29,6 +30,7 @@
     </form>
     <button onclick="location.href='index.html'">Return to Home</button>
     <div id="message"></div>
+</div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);

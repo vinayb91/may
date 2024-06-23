@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Insert Data</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h4>Insert Data</h4>
-    <div class="form-container">
-    
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h4>Enter New User Details</h4>
+      <div class="form-container">
         <form id="insertForm">
-            <div class="form-group">
-                <label for="id">ID:</label>  
-                <input type="text" id="id" name="id" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Id:</label>
-                <input type="text" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone" required>
-            </div>
-            <span id="validationMessage" style="color:red;"></span><br>
-            <button type="submit">Insert Data</button>
+          <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" required />
+          </div>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Id:</label>
+            <input type="text" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required />
+          </div>
+          <span id="validationMessage" style="color: red"></span><br />
+          <button type="submit">Insert User</button>
         </form>
-        
-        
-</div>
-    <button onclick="location.href='index.html'">Return to Home</button>
-    <div id="message"></div>
+
+        <button onclick="location.href='index.html'">Return to Home</button>
+      </div>
+      <div id="message"></div>
+    </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
